@@ -1,4 +1,4 @@
-# Markup Tool
+# Markup for AI
 
 **Annotate any webpage and feed structured feedback directly to an AI agent like Claude.** Highlight content that needs changing, describe what's wrong, and export everything as JSON that Claude Code can act on immediately.
 
