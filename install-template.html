@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markup Tool — Install</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d1a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 640px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #e94560;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .step {
+      background: #1a1a2e;
+      border: 1px solid #16213e;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .step-number {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #e94560;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+
+    .step h2 {
+      display: inline;
+      font-size: 17px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+
+    .step p {
+      margin-top: 12px;
+      color: #aaa;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .bookmarklet-link {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 14px 28px;
+      background: #e94560;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: grab;
+      transition: all 0.15s ease;
+      box-shadow: 0 4px 16px rgba(233, 69, 96, 0.3);
+    }
+
+    .bookmarklet-link:hover {
+      background: #c73a52;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+    }
+
+    .bookmarklet-link:active {
+      cursor: grabbing;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .feature {
+      background: #16213e;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 13px;
+    }
+
+    .feature strong {
+      display: block;
+      color: #e94560;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    code {
+      background: #16213e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #e94560;
+    }
+
+    .note {
+      color: #666;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .note a { color: #e94560; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Markup Tool</h1>
+    <p class="subtitle">Annotate any webpage. Export feedback as JSON for Claude Code.</p>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h2>Install the bookmarklet</h2>
+      <p>Drag this button to your bookmarks bar:</p>
+      <a class="bookmarklet-link" id="bookmarklet" href="#">Markup Tool</a>
+      <p style="font-size: 12px; color: #666; margin-top: 8px;">
+        Can't see the bookmarks bar? Press <code>Cmd+Shift+B</code> (Mac) or <code>Ctrl+Shift+B</code> (Windows)
+      </p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h2>Use it on any page</h2>
+      <p>Navigate to any webpage (including <code>localhost</code>), then click the bookmarklet in your bookmarks bar. A sidebar will appear on the right side of the page.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h2>Highlight &amp; annotate</h2>
+      <p>Select any text on the page. A popup will appear where you can type your feedback comment — what needs to change about the highlighted content. Press <code>Enter</code> to save.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h2>Export for Claude Code</h2>
+      <p>Click <strong>Export JSON</strong> in the sidebar footer. The JSON is copied to your clipboard — paste it directly into a Claude Code conversation to request changes.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">&darr;</span>
+      <h2>What's in the export</h2>
+      <div class="features">
+        <div class="feature">
+          <strong>Selected text</strong>
+          The exact content you highlighted
+        </div>
+        <div class="feature">
+          <strong>Your comment</strong>
+          What change is needed
+        </div>
+        <div class="feature">
+          <strong>DOM context</strong>
+          Element path + nearest heading
+        </div>
+        <div class="feature">
+          <strong>Page info</strong>
+          URL, title, timestamp
+        </div>
+      </div>
+    </div>
+
+    <p class="note">
+      Annotations are saved in <code>localStorage</code> per page URL and persist across sessions.<br>
+      Click the bookmarklet again to toggle the sidebar.
+    </p>
+  </div>
+
+  <script>
+    // Build script replaces this entire line
+    var BOOKMARKLET_URI = "__BOOKMARKLET_PLACEHOLDER__";
+    var link = document.getElementById('bookmarklet');
+
+    if (BOOKMARKLET_URI) {
+      link.href = BOOKMARKLET_URI;
+    } else {
+      // Dev mode: load the raw script file directly
+      link.href = "javascript:void(fetch('" + window.location.href.replace('install-template.html', 'markup-tool.js').replace('install.html', 'markup-tool.js') + "').then(function(r){return r.text()}).then(function(t){eval(t)}))";
+      link.title = 'Dev mode — loads raw JS file directly';
+    }
+
+    // Prevent clicking on the install page (should be dragged)
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Drag this button to your bookmarks bar!');
+    });
+  </script>
+</body>
+</html>
