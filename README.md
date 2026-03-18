@@ -13,10 +13,11 @@ A browser bookmarklet for annotating any webpage — highlight text, add comment
 
 ## How to install
 
-1. Run the build: `bash build.sh`
-2. Open `install.html` in a browser
-3. Drag the "Markup Tool" button to your bookmarks bar
-4. Click the bookmarklet on any page to activate
+1. Clone the repo and install dependencies: `npm install`
+2. Run the build: `bash build.sh`
+3. Open `install.html` in a browser
+4. Drag the "Markup Tool" button to your bookmarks bar
+5. Click the bookmarklet on any page to activate
 
 ## How to use
 
@@ -62,10 +63,12 @@ A browser bookmarklet for annotating any webpage — highlight text, add comment
 
 ```
 markup-tool/
-├── markup-tool.js     ← Source code (annotated, readable)
-├── build.sh           ← Builds bookmarklet + install page
-├── bookmarklet.txt    ← Generated bookmarklet URI (build artifact)
-├── install.html       ← Generated drag-to-install page (build artifact)
+├── markup-tool.js          ← Source code (annotated, readable)
+├── build.js                ← Node.js build script (minify + base64 encode)
+├── build.sh                ← Shell wrapper for build.js
+├── install-template.html   ← Install page template (build injects bookmarklet)
+├── bookmarklet.txt         ← Generated bookmarklet URI (build artifact)
+├── install.html            ← Generated drag-to-install page (build artifact)
 ├── README.md
 ├── CLAUDE.md
 └── docs/
