@@ -1,6 +1,8 @@
 # Markup Tool
 
-A browser bookmarklet for annotating any webpage — highlight text, add comments, and export structured JSON feedback for Claude Code.
+**Annotate any webpage and feed structured feedback directly to an AI agent like Claude.** Highlight content that needs changing, describe what's wrong, and export everything as JSON that Claude Code can act on immediately.
+
+A browser bookmarklet — works on any page including `localhost` dev servers, no extension install required.
 
 ## What it does
 

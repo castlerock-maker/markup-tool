@@ -35,8 +35,8 @@
       right: 0;
       width: 360px;
       height: 100vh;
-      background: #1a1a2e;
-      color: #e0e0e0;
+      background: #0d1b2a;
+      color: #e2e8f0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-size: 13px;
       z-index: 2147483647;
@@ -52,8 +52,8 @@
 
     #markup-tool-header {
       padding: 16px;
-      background: #16213e;
-      border-bottom: 1px solid #0f3460;
+      background: #1b2838;
+      border-bottom: 1px solid #253548;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -64,7 +64,7 @@
       margin: 0;
       font-size: 15px;
       font-weight: 600;
-      color: #e94560;
+      color: #eab308;
       letter-spacing: 0.5px;
     }
 
@@ -74,9 +74,9 @@
     }
 
     .markup-tool-btn {
-      background: #0f3460;
-      color: #e0e0e0;
-      border: 1px solid #1a1a4e;
+      background: #253548;
+      color: #e2e8f0;
+      border: 1px solid #334155;
       padding: 6px 12px;
       border-radius: 6px;
       cursor: pointer;
@@ -86,35 +86,37 @@
     }
 
     .markup-tool-btn:hover {
-      background: #e94560;
+      background: #5b8fd9;
       color: #fff;
-      border-color: #e94560;
+      border-color: #5b8fd9;
     }
 
     .markup-tool-btn--primary {
-      background: #e94560;
-      color: #fff;
-      border-color: #e94560;
+      background: #eab308;
+      color: #0d1b2a;
+      border-color: #eab308;
+      font-weight: 600;
     }
 
     .markup-tool-btn--primary:hover {
-      background: #c73a52;
+      background: #ca9a06;
     }
 
     .markup-tool-btn--danger {
       background: transparent;
-      color: #e94560;
+      color: #94a3b8;
       border-color: transparent;
       padding: 4px 8px;
     }
 
     .markup-tool-btn--danger:hover {
-      background: rgba(233, 69, 96, 0.15);
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
     }
 
     .markup-tool-btn--close {
       background: transparent;
-      color: #888;
+      color: #94a3b8;
       border: none;
       font-size: 18px;
       padding: 4px 8px;
@@ -122,7 +124,7 @@
     }
 
     .markup-tool-btn--close:hover {
-      color: #e94560;
+      color: #e2e8f0;
       background: transparent;
     }
 
@@ -141,27 +143,27 @@
     }
 
     #markup-tool-list::-webkit-scrollbar-thumb {
-      background: #0f3460;
+      background: #253548;
       border-radius: 3px;
     }
 
     .markup-tool-empty {
       text-align: center;
-      color: #666;
+      color: #64748b;
       padding: 40px 20px;
       line-height: 1.6;
     }
 
     .markup-tool-empty strong {
       display: block;
-      color: #888;
+      color: #94a3b8;
       margin-bottom: 8px;
     }
 
     .markup-tool-card {
-      background: #16213e;
-      border: 1px solid #0f3460;
-      border-left: 3px solid #e94560;
+      background: #1b2838;
+      border: 1px solid #253548;
+      border-left: 3px solid #eab308;
       border-radius: 8px;
       padding: 12px;
       margin-bottom: 10px;
@@ -169,7 +171,7 @@
     }
 
     .markup-tool-card:hover {
-      border-color: #e94560;
+      border-color: #eab308;
     }
 
     .markup-tool-card-header {
@@ -181,19 +183,19 @@
 
     .markup-tool-card-number {
       font-size: 11px;
-      color: #e94560;
+      color: #eab308;
       font-weight: 600;
     }
 
     .markup-tool-highlight-text {
-      background: rgba(233, 69, 96, 0.12);
-      border-left: 2px solid #e94560;
+      background: rgba(91, 143, 217, 0.1);
+      border-left: 2px solid #5b8fd9;
       padding: 8px 10px;
       margin-bottom: 8px;
       border-radius: 0 4px 4px 0;
       font-size: 12px;
       line-height: 1.5;
-      color: #ccc;
+      color: #94a3b8;
       max-height: 80px;
       overflow: hidden;
       word-break: break-word;
@@ -202,29 +204,29 @@
     .markup-tool-comment {
       font-size: 12px;
       line-height: 1.5;
-      color: #e0e0e0;
+      color: #e2e8f0;
       word-break: break-word;
     }
 
     /* Inline highlight on the page */
     .markup-tool-inline-highlight {
-      background: rgba(233, 69, 96, 0.25);
-      border-bottom: 2px solid #e94560;
+      background: rgba(234, 179, 8, 0.2);
+      border-bottom: 2px solid #eab308;
       cursor: pointer;
       border-radius: 2px;
       transition: background 0.15s ease;
     }
 
     .markup-tool-inline-highlight:hover {
-      background: rgba(233, 69, 96, 0.4);
+      background: rgba(234, 179, 8, 0.35);
     }
 
     /* Annotation popup */
     #markup-tool-popup {
       position: absolute;
       z-index: 2147483646;
-      background: #1a1a2e;
-      border: 1px solid #0f3460;
+      background: #0d1b2a;
+      border: 1px solid #253548;
       border-radius: 10px;
       padding: 14px;
       width: 300px;
@@ -235,9 +237,9 @@
     #markup-tool-popup textarea {
       width: 100%;
       height: 80px;
-      background: #16213e;
-      color: #e0e0e0;
-      border: 1px solid #0f3460;
+      background: #1b2838;
+      color: #e2e8f0;
+      border: 1px solid #253548;
       border-radius: 6px;
       padding: 10px;
       font-size: 13px;
@@ -248,7 +250,7 @@
     }
 
     #markup-tool-popup textarea:focus {
-      border-color: #e94560;
+      border-color: #5b8fd9;
     }
 
     #markup-tool-popup-actions {
@@ -260,8 +262,8 @@
 
     #markup-tool-footer {
       padding: 12px 16px;
-      background: #16213e;
-      border-top: 1px solid #0f3460;
+      background: #1b2838;
+      border-top: 1px solid #253548;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -270,7 +272,7 @@
 
     #markup-tool-count {
       font-size: 12px;
-      color: #666;
+      color: #64748b;
     }
 
     /* Push page content left to make room for sidebar */
@@ -285,15 +287,15 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: #16213e;
-      color: #e0e0e0;
+      background: #1b2838;
+      color: #e2e8f0;
       padding: 12px 24px;
       border-radius: 8px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-size: 13px;
       z-index: 2147483647;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      border: 1px solid #0f3460;
+      border: 1px solid #253548;
       transition: transform 0.3s ease;
       pointer-events: none;
     }
@@ -402,7 +404,7 @@
         const el = document.querySelector(`.markup-tool-inline-highlight[data-annotation-id="${id}"]`);
         if (el) {
           el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          el.style.background = 'rgba(233, 69, 96, 0.5)';
+          el.style.background = 'rgba(234, 179, 8, 0.45)';
           setTimeout(() => el.style.background = '', 600);
         }
       });
@@ -559,7 +561,7 @@
     function save() {
       const comment = textarea.value.trim();
       if (!comment) {
-        textarea.style.borderColor = '#e94560';
+        textarea.style.borderColor = '#ef4444';
         textarea.placeholder = 'Please add a comment...';
         textarea.focus();
         return;
