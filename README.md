@@ -4,6 +4,8 @@
 
 A browser bookmarklet — works on any page including `localhost` dev servers, no extension install required.
 
+**Install it now:** [markup-tool.vercel.app](https://markup-tool.vercel.app)
+
 ## What it does
 
 - **Highlight & annotate**: Select any text on a page, add a comment describing what needs to change
@@ -15,6 +17,9 @@ A browser bookmarklet — works on any page including `localhost` dev servers, n
 
 ## How to install
 
+**Quickest way:** Visit [markup-tool.vercel.app](https://markup-tool.vercel.app) and drag the button to your bookmarks bar.
+
+**From source:**
 1. Clone the repo and install dependencies: `npm install`
 2. Run the build: `bash build.sh`
 3. Open `install.html` in a browser

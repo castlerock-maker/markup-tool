@@ -2,7 +2,7 @@
 
 ## Current state
 
-v1.0 — fully functional bookmarklet. Can be installed from `install.html`, used on any page to highlight text, add annotations, and export JSON for Claude Code.
+v1.0 — fully functional bookmarklet. Hosted at https://markup-tool.vercel.app. Can be installed by dragging the button to the bookmarks bar. Used on any page to highlight text, add annotations, and export JSON for Claude Code.
 
 ## Last session summary
 

@@ -2,6 +2,8 @@
 
 Browser bookmarklet for annotating webpages and exporting structured feedback JSON for Claude Code.
 
+**Live install page:** https://markup-tool.vercel.app
+
 ## Key conventions
 
 - Single-file vanilla JS (`markup-tool.js`) — no framework, no dependencies
