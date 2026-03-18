@@ -102,6 +102,19 @@
       background: #ca9a06;
     }
 
+    .markup-tool-btn--edit {
+      background: transparent;
+      color: #94a3b8;
+      border-color: transparent;
+      padding: 4px 8px;
+      font-size: 11px;
+    }
+
+    .markup-tool-btn--edit:hover {
+      color: #5b8fd9;
+      background: rgba(91, 143, 217, 0.1);
+    }
+
     .markup-tool-btn--danger {
       background: transparent;
       color: #94a3b8;
@@ -112,6 +125,27 @@
     .markup-tool-btn--danger:hover {
       color: #ef4444;
       background: rgba(239, 68, 68, 0.1);
+    }
+
+    .markup-tool-edit-area {
+      width: 100%;
+      height: 60px;
+      background: #1b2838;
+      color: #e2e8f0;
+      border: 1px solid #5b8fd9;
+      border-radius: 6px;
+      padding: 8px;
+      font-size: 12px;
+      font-family: inherit;
+      resize: vertical;
+      outline: none;
+    }
+
+    .markup-tool-edit-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 6px;
     }
 
     .markup-tool-btn--close {
@@ -376,16 +410,20 @@
       <div class="markup-tool-card" data-id="${a.id}">
         <div class="markup-tool-card-header">
           <span class="markup-tool-card-number">#${i + 1}</span>
-          <button class="markup-tool-btn markup-tool-btn--danger" data-delete="${a.id}" title="Delete">&times;</button>
+          <div>
+            <button class="markup-tool-btn markup-tool-btn--edit" data-edit="${a.id}" title="Edit">Edit</button>
+            <button class="markup-tool-btn markup-tool-btn--danger" data-delete="${a.id}" title="Delete">&times;</button>
+          </div>
         </div>
         <div class="markup-tool-highlight-text">${escapeHtml(a.selectedText)}</div>
-        <div class="markup-tool-comment">${escapeHtml(a.comment)}</div>
+        <div class="markup-tool-comment" data-comment-id="${a.id}">${escapeHtml(a.comment)}</div>
       </div>
     `).join('');
 
     // Delete handlers
     list.querySelectorAll('[data-delete]').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const id = parseInt(e.target.dataset.delete);
         annotations = annotations.filter(a => a.id !== id);
         saveAnnotations();
@@ -396,10 +434,62 @@
       });
     });
 
+    // Edit handlers
+    list.querySelectorAll('[data-edit]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(e.target.dataset.edit);
+        const annotation = annotations.find(a => a.id === id);
+        if (!annotation) return;
+
+        const commentEl = list.querySelector(`[data-comment-id="${id}"]`);
+        if (!commentEl) return;
+
+        // Replace comment with editable textarea
+        const editContainer = document.createElement('div');
+        const textarea = document.createElement('textarea');
+        textarea.className = 'markup-tool-edit-area';
+        textarea.value = annotation.comment;
+
+        const actions = document.createElement('div');
+        actions.className = 'markup-tool-edit-actions';
+        actions.innerHTML = `
+          <button class="markup-tool-btn" data-edit-cancel>Cancel</button>
+          <button class="markup-tool-btn markup-tool-btn--primary" data-edit-save>Save</button>
+        `;
+
+        editContainer.appendChild(textarea);
+        editContainer.appendChild(actions);
+        commentEl.replaceWith(editContainer);
+        textarea.focus();
+        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+
+        function saveEdit() {
+          const newComment = textarea.value.trim();
+          if (!newComment) {
+            textarea.style.borderColor = '#ef4444';
+            textarea.focus();
+            return;
+          }
+          annotation.comment = newComment;
+          saveAnnotations();
+          renderList();
+          showToast('Annotation updated');
+        }
+
+        textarea.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); saveEdit(); }
+          if (e.key === 'Escape') renderList();
+        });
+        actions.querySelector('[data-edit-cancel]').addEventListener('click', () => renderList());
+        actions.querySelector('[data-edit-save]').addEventListener('click', saveEdit);
+      });
+    });
+
     // Click card to scroll to highlight
     list.querySelectorAll('.markup-tool-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.dataset.delete) return;
+        if (e.target.dataset.delete || e.target.dataset.edit) return;
         const id = parseInt(card.dataset.id);
         const el = document.querySelector(`.markup-tool-inline-highlight[data-annotation-id="${id}"]`);
         if (el) {
